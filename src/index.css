@@ -21,12 +21,108 @@ body {
   width: 300px;
 
 }
+/* Container for the heading */
+/* .form-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #e0e0e0;
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(90deg, transparent, #6200ea, transparent);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: bubble 10s forwards; 
+} */
 
+/* After animation, revert to the original color */
+/* .form-container h2::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #e0e0e0;
+  z-index: -1;
+} */
+
+/* @keyframes bubble {
+  0% {
+    background-position: 200% 0;
+    color: transparent;
+  }
+  100% {
+    background-position: 0% 0;
+    color: #e0e0e0;
+  }
+} */
+
+
+
+/* Container for the heading */ 
+/* .form-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #e0e0e0;
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(90deg, transparent, #6200ea, transparent);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: bubble 5s infinite;
+} */
+/* Keyframes for bubble effect */
+/* @keyframes bubble {
+  0% {
+    background-position: 200% 0;
+  }
+  50% {
+    background-position: 0% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+} */
+
+
+/* Container for the heading */
 .form-container h2 {
   text-align: center;
   margin-bottom: 20px;
   color: #e0e0e0;
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(90deg, transparent, #6200ea, transparent);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: bubble 8s infinite; /* Run the animation infinitely */
 }
+
+/* Keyframes for bubble effect */
+@keyframes bubble {
+  0% {
+    background-position: 200% 0;
+    color: transparent; /* Start with transparent text */
+  }
+  50% {
+    background-position: 0% 0;
+    color: #6200ea; /* Middle of the animation where text is colored */
+  }
+  100% {
+    background-position: 200% 0;
+    color: #e0e0e0; /* End state where the text reverts to original color */
+  }
+}
+
+
+
+
 
 .form-container label {
   display: block;
@@ -68,8 +164,5 @@ body {
   border: 2px solid #6200ea;
 }
 
-.form-container:hover {
-  outline: none;
-  border: 1px solid #656464;
-}
+
 
