@@ -22,7 +22,7 @@ body {
 
 }
 /* Container for the heading */
-/* .form-container h2 {
+.form-container h2 {
   text-align: center;
   margin-bottom: 20px;
   color: #e0e0e0;
@@ -33,11 +33,11 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: bubble 10s forwards; 
-} */
+  animation: bubble 3s infinite; 
+}
 
 /* After animation, revert to the original color */
-/* .form-container h2::after {
+.form-container h2::after {
   content: '';
   position: absolute;
   left: 0;
@@ -46,9 +46,9 @@ body {
   height: 100%;
   background-color: #e0e0e0;
   z-index: -1;
-} */
+}
 
-/* @keyframes bubble {
+@keyframes bubble {
   0% {
     background-position: 200% 0;
     color: transparent;
@@ -57,7 +57,7 @@ body {
     background-position: 0% 0;
     color: #e0e0e0;
   }
-} */
+}
 
 
 
@@ -90,7 +90,7 @@ body {
 
 
 /* Container for the heading */
-.form-container h2 {
+/* .form-container h2 {
   text-align: center;
   margin-bottom: 20px;
   color: #e0e0e0;
@@ -101,24 +101,24 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: bubble 8s infinite; /* Run the animation infinitely */
-}
+  animation: bubble 8s infinite; 
+} */
 
 /* Keyframes for bubble effect */
-@keyframes bubble {
+/* @keyframes bubble {
   0% {
     background-position: 200% 0;
-    color: transparent; /* Start with transparent text */
+    color: transparent; 
   }
   50% {
     background-position: 0% 0;
-    color: #6200ea; /* Middle of the animation where text is colored */
+    color: #6200ea; 
   }
   100% {
     background-position: 200% 0;
-    color: #e0e0e0; /* End state where the text reverts to original color */
+    color: #e0e0e0; 
   }
-}
+} */
 
 
 
