@@ -59,71 +59,6 @@ body {
   }
 }
 
-
-
-/* Container for the heading */ 
-/* .form-container h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #e0e0e0;
-  position: relative;
-  display: inline-block;
-  background: linear-gradient(90deg, transparent, #6200ea, transparent);
-  background-size: 200%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: bubble 5s infinite;
-} */
-/* Keyframes for bubble effect */
-/* @keyframes bubble {
-  0% {
-    background-position: 200% 0;
-  }
-  50% {
-    background-position: 0% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-} */
-
-
-/* Container for the heading */
-/* .form-container h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #e0e0e0;
-  position: relative;
-  display: inline-block;
-  background: linear-gradient(90deg, transparent, #6200ea, transparent);
-  background-size: 200%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: bubble 8s infinite; 
-} */
-
-/* Keyframes for bubble effect */
-/* @keyframes bubble {
-  0% {
-    background-position: 200% 0;
-    color: transparent; 
-  }
-  50% {
-    background-position: 0% 0;
-    color: #6200ea; 
-  }
-  100% {
-    background-position: 200% 0;
-    color: #e0e0e0; 
-  }
-} */
-
-
-
-
-
 .form-container label {
   display: block;
   margin-bottom: 8px;
@@ -164,5 +99,79 @@ body {
   border: 2px solid #6200ea;
 }
 
+.switch{
+  color: #b0b0b0;
+}
+.switch-btn{
+  color: #6200ea;
+  font-weight: bolder;
+  text-decoration: none;
+}
+
+.left-container{
+  padding: 20px;
+}
 
 
+
+.lottie-animation{
+  width: 400px;
+  height: 370px;
+}
+
+/* Typewriter effect */
+.typewrite {
+  font-size: 45px;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.typewrite {
+  display: inline-flex;
+  align-items: center;
+  position: relative; /* Add this to position the cursor */
+}
+
+.fixed {
+  display: inline-block;
+  margin-right: 10px;
+  color: white;
+}
+
+.wrap {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  color: #6200ea;
+  position: relative; /* Add this to position the cursor */
+}
+
+/* Add a pseudo-element to create the cursor */
+.wrap::after {
+  content: '';
+  right: -2px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 1em;
+  width: 2px;
+  background-color: white;
+  animation: caret-blink 1s infinite;
+  margin-left: 5px; 
+}
+
+/* Animation for caret blinking */
+@keyframes caret-blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

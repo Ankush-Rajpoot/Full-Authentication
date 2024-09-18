@@ -1,29 +1,22 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const DarkForm = () => {
+const Login = () => {
   return (
     <div className="form-container">
-      <h2>Sign Up</h2>
+      <h2>Login</h2>      
       <form>
-        <label htmlFor="name">Name</label>
-        <input type="text" id="name" name="name" required />
-
         <label htmlFor="email">Email</label>
         <input type="email" id="email" name="email" required />
 
         <label htmlFor="password">Password</label>
         <input type="password" id="password" name="password" required />
 
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Login" />
       </form>
+      <p class="switch">Don't have an account? <Link to="/" class="switch-btn">Sign Up</Link></p>
     </div>
   );
 }
 
-export default function App() {
-  return (
-    <div className="app">
-      <DarkForm />
-    </div>
-  );
-}
+export default Login;
