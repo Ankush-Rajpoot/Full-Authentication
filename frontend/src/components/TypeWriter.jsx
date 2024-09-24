@@ -28,7 +28,7 @@ const Typewriter = ({ texts, period }) => {
 
   return (
     <h1 className="typewrite">
-        <span className="fixed">Know&nbsp;</span>
+        <span className="fixed">KNOW&nbsp;</span>
         <span className="wrap">{displayedText}</span>
     </h1>
 

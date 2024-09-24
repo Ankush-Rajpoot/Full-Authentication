@@ -107,6 +107,20 @@ body {
   font-weight: bolder;
   text-decoration: none;
 }
+.logout-btn{
+  /* color: #6200ea;
+  font-weight: bolder;
+  text-decoration: none; */
+  width: 102%;
+  padding: 10px;
+  background-color: #6200ea;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+}
 
 .left-container{
   padding: 20px;
