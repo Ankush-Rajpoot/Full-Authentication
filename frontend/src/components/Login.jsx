@@ -8,7 +8,7 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate=useNavigate();
-  const loginwithgoogle = ()=>{
+  const signInWithGoogle = ()=>{
     window.open("http://localhost:5000/auth/google/callback","_self")
 }
 
@@ -58,7 +58,7 @@ const Login = () => {
       <p className="switch">
         Don't have an account? <Link to="/" className="switch-btn">Sign Up</Link>
       </p>
-      <button className='login-with-google-btn' onClick={loginwithgoogle}>Sign In With Google</button>
+      <button className='login-with-google-btn' onClick={signInWithGoogle}>Sign In With Google</button>
     </div>
   );
 };

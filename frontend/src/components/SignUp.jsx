@@ -10,6 +10,9 @@ const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate=useNavigate();
+  const signInWithGoogle = ()=>{
+    window.open("http://localhost:5000/auth/google/callback","_self")
+}
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent default form submission
@@ -71,6 +74,7 @@ const SignUp = () => {
       <p className="switch">
         Already have an account? <Link to="/login" className="switch-btn">Login</Link>
       </p>
+      <button className='login-with-google-btn' onClick={signInWithGoogle}>Sign In With Google</button>
     </div>
   );
 }

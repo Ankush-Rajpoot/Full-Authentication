@@ -8,6 +8,7 @@ const { Strategy: GoogleStrategy } = pkg;
 // import userRouter from "./routes/user.router.js"
 import { generateAccessAndRefreshTokens } from "./controllers/user.controller.js";
 import { User } from "./models/user.model.js";
+import sendEmail from "./utils/sendEmail.js";
 import dotenv from "dotenv"
 
 dotenv.config();
@@ -48,6 +49,7 @@ passport.use(
     async(googleAccessToken,googleRefreshrefreshToken,profile,done)=>{
         try {
             let user=await User.findOne({googleId:profile.id});
+            let isNewUser=false;
             if(!user){
                 user =new User({
                     googleId:profile.id,
@@ -57,10 +59,23 @@ passport.use(
                     image:profile.photos[0].value
             });
             await user.save();
+            isNewUser=true;
         }
         const { accessToken: jwtAccessToken, refreshToken: jwtRefreshToken } = await generateAccessAndRefreshTokens(user._id);
         user.accessToken = jwtAccessToken;
         user.refreshToken = jwtRefreshToken;
+        if(isNewUser){
+            try {
+                await sendEmail({
+                    email:user.email,
+                    subject: 'Welcome to LegalYouToday',
+                    name:user.fullName,
+                })
+            }
+            catch (error) {
+                console.error("Error sending welcome email:", error.message);
+            }
+        }
         return done(null,user);
         }
         catch (error) {
