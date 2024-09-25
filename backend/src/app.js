@@ -60,10 +60,12 @@ passport.use(
             });
             await user.save();
             isNewUser=true;
+            // console.log(user)
         }
         const { accessToken: jwtAccessToken, refreshToken: jwtRefreshToken } = await generateAccessAndRefreshTokens(user._id);
         user.accessToken = jwtAccessToken;
         user.refreshToken = jwtRefreshToken;
+        console.log(user)
         if(isNewUser){
             try {
                 await sendEmail({
@@ -80,8 +82,9 @@ passport.use(
         }
         catch (error) {
             return done(error,null)
-        }
+        } 
     }
+    
 ))
 
 passport.serializeUser((user, done) => {
@@ -104,10 +107,12 @@ app.get("/auth/google/callback", passport.authenticate("google", {
         httpOnly:true,
         secure:true,
     }
+    
     res
     .cookie("accessToken",accessToken,options)
     .cookie("refreshToken",refreshToken,options)
     .redirect("http://localhost:5173/profile")
+    
 });
 
 app.get("/login/success", async (req, res) => {
