@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import api from '../api.js'; // Import your API service
+// import api from '../api.js'; 
+import { AuthStore } from '../store/AuthStore';
+import PasswordStrengthMeter from '../components/PasswordStrengthMeter';
 
 
 const SignUp = () => {
@@ -10,22 +12,22 @@ const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate=useNavigate();
+  const { signup, error, isLoading } =AuthStore();
+
+
   const signInWithGoogle = ()=>{
     window.open("http://localhost:5000/auth/google/callback","_self")
 }
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent default form submission
-    try{
-      const response = await api.post('/users/register', { fullName, username, email, password });
-      alert('User registered successfully!');
-      console.log(response.data);
-      navigate('/profile');
-    }
-    catch (err) {
-      console.error(err);
-      alert('Error registering user.');
-    }
+    e.preventDefault(); 
+
+    try {
+			await signup(fullName,username,email, password);
+			navigate("/verify-email");
+		} catch (error) {
+			console.log(error);
+		}
   };
 
   return (
@@ -68,6 +70,8 @@ const SignUp = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
+        
+        <PasswordStrengthMeter password={password} />
         <input type="submit" value="Submit" />
       </form>
 

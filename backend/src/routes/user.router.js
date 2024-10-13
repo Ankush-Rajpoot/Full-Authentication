@@ -1,10 +1,10 @@
 import {Router} from "express"
 import { loginUser, registerUser,logoutUser, refreshAccessToken, verifyEmail,forgotPassword,
-	resetPassword} from "../controllers/user.controller.js"
+	resetPassword,checkAuth} from "../controllers/user.controller.js"
 import { verifyJWT } from "../middlewares/auth.middleware.js";
 
 const router=Router();
-
+router.route("/check-auth").get(verifyJWT,checkAuth)
 router.route("/register").post(registerUser)
 router.route("/login").post(loginUser)
 router.route("/logout").post(verifyJWT,logoutUser)

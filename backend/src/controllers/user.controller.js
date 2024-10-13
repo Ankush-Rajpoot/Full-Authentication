@@ -268,7 +268,6 @@ const resetPassword=asyncHandler(async(req,res)=>{
 })
 
 
-
 const refreshAccessToken=asyncHandler(async(req,res)=>{
     const incomingRefreshToken=req.cookies.refreshToken || req.body.refreshToken
 
@@ -314,6 +313,7 @@ const refreshAccessToken=asyncHandler(async(req,res)=>{
    }
 })
 
+
 const getCurrentUser=asyncHandler(async(req,res)=>{
     return res
     .status(200)
@@ -324,6 +324,20 @@ const getCurrentUser=asyncHandler(async(req,res)=>{
     ))
 })
 
+const checkAuth = asyncHandler(async (req, res) => {
+	try {
+		const user = await User.findById(req.user._id).select("-password");
+		if (!user) {
+			return res.status(400).json({ success: false, message: "User not found" });
+		}
+
+		res.status(200).json({ success: true, user });
+	} catch (error) {
+		console.log("Error in checkAuth ", error);
+		res.status(400).json({ success: false, message: error.message });
+	}
+});
+
 export {
     registerUser,
     loginUser,
@@ -333,5 +347,6 @@ export {
     generateAccessAndRefreshTokens,
     verifyEmail,
     forgotPassword,
-    resetPassword
+    resetPassword,
+    checkAuth
 }

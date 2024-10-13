@@ -1,3 +1,4 @@
+
 body {
   font-family: Arial, sans-serif;
   background-color: #121212;
@@ -198,3 +199,66 @@ body {
     background-repeat: no-repeat;
     background-position: 12px 11px;
   }
+
+
+  /* Container for Password Criteria and Strength Meter */
+.password-meter-container {
+  margin-top: 16px;
+}
+
+/* Criteria list item */
+.criteria-item {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+/* Check and X icons */
+.icon {
+  margin-right: 8px;
+}
+
+.icon-green {
+  color: #10b981; /* Green */
+}
+
+.icon-gray {
+  color: #6b7280; /* Gray */
+}
+
+/* Strength meter text */
+.strength-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+  font-size: 12px;
+  color: #9ca3af; /* Gray */
+}
+
+/* Strength bars */
+.strength-bars {
+  display: flex;
+  gap: 4px;
+}
+
+.strength-bar {
+  height: 4px;
+  width: 25%;
+  border-radius: 9999px;
+  transition: background-color 0.3s;
+  background-color: #4b5563; /* Default Gray */
+}
+
+.strength-bar.red {
+  background-color: #ef4444; /* Red */
+}
+
+.strength-bar.yellow {
+  background-color: #f59e0b; /* Yellow */
+}
+
+.strength-bar.green {
+  background-color: #10b981; /* Green */
+} 

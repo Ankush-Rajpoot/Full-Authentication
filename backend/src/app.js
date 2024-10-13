@@ -8,7 +8,8 @@ const { Strategy: GoogleStrategy } = pkg;
 // import userRouter from "./routes/user.router.js"
 import { generateAccessAndRefreshTokens } from "./controllers/user.controller.js";
 import { User } from "./models/user.model.js";
-import sendEmail from "./utils/sendEmail.js";
+// import sendEmail from "./utils/sendEmail.js";
+import { sendVerificationEmail } from "./mailtrap/emails.js";
 import dotenv from "dotenv"
 
 dotenv.config();
@@ -48,14 +49,20 @@ passport.use(
 
     async(googleAccessToken,googleRefreshrefreshToken,profile,done)=>{
         try {
-            let user=await User.findOne({googleId:profile.id});
-            let isNewUser=false;
+            let user = await User.findOne({ email: profile.emails[0].value });
+                if (user) {
+                    return done(null, false, { message: "User already registered with this email" });
+                }
+                let isNewUser=false;
+            const verificationToken = Math.floor(100000 + Math.random() * 900000).toString();
             if(!user){
                 user =new User({
                     googleId:profile.id,
                     fullName: profile.displayName, // Set fullName from displayName
                     username: profile.emails[0].value.split('@')[0], 
                     email:profile.emails[0].value,
+                    verificationToken,
+                    verificationTokenExpiresAt:Date.now()+24*60*60*1000,
                     image:profile.photos[0].value
             });
             await user.save();
@@ -67,16 +74,7 @@ passport.use(
         user.refreshToken = jwtRefreshToken;
         console.log(user)
         if(isNewUser){
-            try {
-                await sendEmail({
-                    email:user.email,
-                    subject: 'Welcome to LegalYouToday',
-                    name:user.fullName,
-                })
-            }
-            catch (error) {
-                console.error("Error sending welcome email:", error.message);
-            }
+            await sendVerificationEmail(user.email, verificationToken);
         }
         return done(null,user);
         }
@@ -111,7 +109,7 @@ app.get("/auth/google/callback", passport.authenticate("google", {
     res
     .cookie("accessToken",accessToken,options)
     .cookie("refreshToken",refreshToken,options)
-    .redirect("http://localhost:5173/profile")
+    .redirect("http://localhost:5173/verify-email")
     
 });
 
